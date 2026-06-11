@@ -1,0 +1,38 @@
+site_name: AI Without the Black Box
+docs_dir: .
+
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: indigo
+    accent: indigo
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Cosine Similarity:
+    - Overview: cosine-similarity/README.md
+    - Step 1 — Vectors from Scratch:
+      - Dot Product: cosine-similarity/step1-vectors/dot-product.md
+      - Magnitude: cosine-similarity/step1-vectors/magnitude.md
+    - Step 2 — TF-IDF:
+      - Overview: cosine-similarity/step2-tfidf/tfidf.md
+      - Term Frequency: cosine-similarity/step2-tfidf/tf.md
+      - Inverse Document Frequency: cosine-similarity/step2-tfidf/idf.md
