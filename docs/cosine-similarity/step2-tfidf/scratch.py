@@ -1,5 +1,4 @@
 import math
-import pdb
 from collections import Counter
 
 
@@ -15,7 +14,6 @@ def tokenize(doc):
 
 
 def term_frequency(doc):
-    pdb.set_trace()
     tokens = tokenize(doc)
     counts = Counter(tokens)
     total = len(tokens)
@@ -23,7 +21,6 @@ def term_frequency(doc):
 
 
 def inverse_document_frequency(corpus):
-    pdb.set_trace()
     N = len(corpus)
     all_words = set(word for doc in corpus for word in tokenize(doc))
     idf = {}
@@ -34,13 +31,11 @@ def inverse_document_frequency(corpus):
 
 
 def tfidf(doc, idf):
-    pdb.set_trace()
     tf = term_frequency(doc)
     return {word: round(tf_score * idf.get(word, 0), 4) for word, tf_score in tf.items()}
 
 
 def to_dense_vector(tfidf_scores, vocabulary):
-    pdb.set_trace()
     return [tfidf_scores.get(word, 0.0) for word in vocabulary]
 
 

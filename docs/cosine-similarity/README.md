@@ -20,3 +20,4 @@ Where `A · B` is the dot product and `|A|`, `|B|` are the magnitudes.
 |------|------|------|------|
 | 1 | Implement cosine similarity from scratch | [scratch.py](step1-vectors/scratch.py) | [dot-product.md](step1-vectors/dot-product.md), [magnitude.md](step1-vectors/magnitude.md) |
 | 2 | Convert text to vectors with TF-IDF | [scratch.py](step2-tfidf/scratch.py) | [tfidf.md](step2-tfidf/tfidf.md) → [tf.md](step2-tfidf/tf.md), [idf.md](step2-tfidf/idf.md) |
+| 3 | Search — query vs all documents | [scratch.py](step3-search/scratch.py) | [README.md](step3-search/README.md), [query-vectorization.md](step3-search/query-vectorization.md) |

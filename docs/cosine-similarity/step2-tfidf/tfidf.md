@@ -84,3 +84,43 @@ These vectors can now be fed directly into `cosine_similarity()` from `../step1-
 | **Baseline NLP** | Still used as a fast, interpretable baseline before trying embeddings |
 
 TF-IDF is the bridge between raw text and the vector math you already know. See [scratch.py](scratch.py) to implement it from scratch.
+
+---
+
+## Code Walkthrough
+
+Here is what each function in `scratch.py` does and what to look for when stepping through with `pdb`:
+
+**`term_frequency(doc)`**
+- Tokenizes the doc into words
+- Counts each word with `Counter`
+- Divides by total word count to normalize
+- *Pause here and check:* does `"the"` have a higher count than `"cat"`? It should — TF doesn't penalize it yet
+
+**`inverse_document_frequency(corpus)`**
+- Builds the full vocabulary across all documents
+- For each word, counts how many docs contain it (`df`)
+- Computes `log(N / df)` for each word
+- *Pause here and check:* `idf["the"]` should be `0.0`, unique words like `"mat"` or `"friends"` should be highest
+
+**`tfidf(doc, idf)`**
+- Calls `term_frequency()` for the doc
+- Multiplies each word's TF by its IDF score
+- *Pause here and check:* `"the"` should become `0.0`, while `"cat"` or `"mat"` should have non-zero scores
+
+**`to_dense_vector(tfidf_scores, vocabulary)`**
+- Takes the TF-IDF dict (sparse — only words in the doc)
+- Expands it into a fixed-length list using the full vocabulary
+- Words not in the doc get `0.0`
+- *Pause here and check:* all vectors should be the same length — equal to the vocabulary size
+
+**Expected output when you run it:**
+```
+Vocabulary: ['and', 'are', 'cat', 'dog', 'friends', 'log', 'mat', 'on', 'sat', 'the']
+
+Doc 1: [0.0, 0.0, 0.0676, 0.0, 0.0, 0.0, 0.1827, 0.0676, 0.0676, 0.0]
+Doc 2: [0.0, 0.0, 0.0, 0.0676, 0.0, 0.1827, 0.0, 0.0676, 0.0676, 0.0]
+Doc 3: [0.1827, 0.1827, 0.0, 0.0, 0.3662, 0.0, 0.0, 0.0, 0.0, 0.0]
+```
+
+Notice: `"the"` column is all zeros across every document. The vocabulary slot exists but carries no signal.

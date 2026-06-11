@@ -1,5 +1,4 @@
 site_name: AI Without the Black Box
-docs_dir: .
 
 theme:
   name: material
@@ -36,3 +35,6 @@ nav:
       - Overview: cosine-similarity/step2-tfidf/tfidf.md
       - Term Frequency: cosine-similarity/step2-tfidf/tf.md
       - Inverse Document Frequency: cosine-similarity/step2-tfidf/idf.md
+    - Step 3 — Search:
+      - Overview: cosine-similarity/step3-search/README.md
+      - Query Vectorization: cosine-similarity/step3-search/query-vectorization.md
